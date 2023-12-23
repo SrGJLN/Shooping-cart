@@ -2,45 +2,66 @@
 import React from "react";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import Button from "react-bootstrap/Button";
 
 const Cart = () => {
-  const { cart, removeFromCart, clearCart } = useContext(AppContext);
-  
-  const calculateTotal = () => {
-    return cart.reduce((total, pizza) => total + pizza.price, 0);
-  };
+  const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
+    useContext(AppContext);
 
   return (
     <div>
       <h2>Carrito de Compras</h2>
-      <div>
-        {cart.length > 0 &&
-          cart.map((pizza) =>{
-            console.log(pizza)
-            return (
-              <div key={pizza.id}>
-                <img src={pizza.img} alt="pizza" />
-                <p>{pizza.name}</p>
-                <div>
-                <p>{pizza.price}</p>
-                <button onClick={() => removeFromCart(pizza.id)}>Quitar</button>
-                </div>
+      <div className="card-cart">
+        {cartItems.length > 0 &&
+          cartItems.map((pizza) => (
+            <div className="card-cart-id" key={pizza.id}>
+              <img
+                className="card-cart-img"
+                src={pizza.img}
+                alt="pizza"
+                style={{ width: "8rem", height: "5rem" }}
+              />
+              <p className="card-cart-name">{pizza.name}</p>
+              <div className="card-cart-btn-right">
+                <p className="card-cart-price">${pizza.price}</p>
+                <p>{pizza.quantity}</p>
+                <Button
+                  className="card-cart-btn-ad"
+                  variant="info"
+                  onClick={() => addToCart(pizza)}
+                >
+                  Agregar
+                </Button>
+                <Button
+                  className="card-cart-btn-de"
+                  variant="danger"
+                  onClick={() => removeFromCart(pizza)}
+                >
+                  Quitar
+                </Button>
               </div>
-            )
-          })}
-      
+            </div>
+          ))}
       </div>
-      <p>Total a pagar: ${calculateTotal()}</p>
-      <button onClick={clearCart}>Vaciar Carrito</button>
+
+      {cartItems.length > 0 ? (
+        <div className="flex flex-col justify-between items-center">
+          <h3 className="text-lg font-bold">Total: ${getCartTotal()}</h3>
+          <Button
+            className="card-cart-btn-cl"
+            variant="success"
+            onClick={() => {
+              clearCart();
+            }}
+          >
+            Vaciar carrito
+          </Button>
+        </div>
+      ) : (
+        <h2 className="text-lg font-bold">El carro esta vacio</h2>
+      )}
     </div>
   );
 };
 
 export default Cart;
-
-  {/* {cart.map((pizza) => (
-          <li key={pizza.id}>
-            {pizza.name} - ${pizza.price}
-            <button onClick={() => removeFromCart(pizza.id)}>Quitar</button>
-          </li>
-        ))} */}

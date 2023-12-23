@@ -1,8 +1,6 @@
 nav {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  padding: 30px;
 }
 
 .imagen-back {
@@ -11,6 +9,7 @@ nav {
 
 .thumbnail {
   position: relative;
+  width: 100%;
 }
 .caption {
   position: absolute;
@@ -19,12 +18,86 @@ nav {
   width: 100%;
 }
 
-h1 {
+.text-banner_1 {
   color: white;
   margin-left: 20%;
 }
 
-h3 {
+.text-banner_2 {
   color: white;
   margin-left: 20%;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-left: 5%;
+}
+
+.text-catalogo {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_cart_cat {
+  margin: 2px;
+}
+
+.col {
+  display: flex;
+  justify-content: center;
+  border: solid;
+  border-radius: 10%;
+}
+
+.card-detail {
+  display: flex;
+  padding: 10px;
+}
+
+.card-detail-img {
+  width: 50%;
+}
+
+.card-detail-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.card-cart-id {
+  display: flex;
+  padding-left: 10px;
+  margin: 10px;
+  border: solid;
+}
+
+.card-cart-img {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.card-cart-name {
+  padding: 10px;
+  display: flex;
+  align-self: center;
+}
+
+.card-cart-btn-right {
+  padding-right: 10px;
+  margin-left: auto;
+}
+
+.card-cart-total {
+  padding-left: 10px;
 }

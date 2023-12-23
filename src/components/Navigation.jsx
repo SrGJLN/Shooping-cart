@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 import CartIcon from "../assets/imgs/cart-shopping-solid.svg";
 
 const Navigation = () => {
+  const { cartItems } = useContext(AppContext);
+
+  const quantity = cartItems.reduce((acumulate, actualy) =>{
+    return acumulate + actualy.quantity;
+  }, 0);
+
+
   return (
     <Navbar className="bg-body-tertiary">
       <Container>
@@ -17,7 +25,7 @@ const Navigation = () => {
         </Navbar.Collapse>
         <Nav className="ms-3">
           <div className="car">
-            <span>0</span>
+            <span>{quantity}</span>
             <Link to="/cart">
               <img src={CartIcon} alt="carrito" width="20" />
             </Link>

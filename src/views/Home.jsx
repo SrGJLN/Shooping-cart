@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <HeaderImage />
-      <h2>Home - Catálogo de Pizzas</h2>
+      <h2 className="text-catalogo">Catálogo de Pizzas</h2>
       <PizzaCatalog />
     </div>
   );
